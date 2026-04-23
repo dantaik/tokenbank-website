@@ -3,30 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TokenBank — Your Digital Asset Bank</title>
+  <title>TokenBank.com — Premium Domain For Sale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0a0e1a;
-      --surface: #111827;
-      --border: #1e2d45;
-      --accent: #3b82f6;
-      --accent-glow: #60a5fa;
-      --gold: #f59e0b;
-      --text: #e2e8f0;
-      --muted: #64748b;
-      --radius: 12px;
+      --bg: #03060f;
+      --surface: #060d1a;
+      --cyan: #00f5ff;
+      --cyan-dim: rgba(0, 245, 255, 0.12);
+      --cyan-glow: rgba(0, 245, 255, 0.06);
+      --violet: #7c3aed;
+      --violet-dim: rgba(124, 58, 237, 0.15);
+      --green: #00ff88;
+      --white: #e8f4f8;
+      --muted: #4a6980;
+      --border: rgba(0, 245, 255, 0.1);
+      --border-bright: rgba(0, 245, 255, 0.3);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
       background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
       overflow-x: hidden;
+    }
+
+    /* GRID BACKGROUND */
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(0,245,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,245,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* AMBIENT GLOWS */
+    .glow-top {
+      position: fixed;
+      top: -200px; left: 50%;
+      transform: translateX(-50%);
+      width: 1000px; height: 600px;
+      background: radial-gradient(ellipse, rgba(0,245,255,0.07) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow-bottom {
+      position: fixed;
+      bottom: -300px; right: -200px;
+      width: 800px; height: 600px;
+      background: radial-gradient(ellipse, rgba(124,58,237,0.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
     }
 
     /* NAV */
@@ -37,486 +75,862 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 2rem;
-      background: rgba(10, 14, 26, 0.85);
-      backdrop-filter: blur(12px);
+      padding: 1.2rem 2.5rem;
+      background: rgba(3,6,15,0.8);
+      backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
 
-    .logo {
+    .nav-logo {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--text);
+      gap: 0.75rem;
       text-decoration: none;
     }
 
-    .logo-icon {
-      width: 32px; height: 32px;
-      background: linear-gradient(135deg, var(--accent), var(--gold));
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
-    }
-
-    nav ul {
-      list-style: none;
+    .logo-hex {
+      width: 34px; height: 34px;
+      position: relative;
       display: flex;
-      gap: 2rem;
+      align-items: center;
+      justify-content: center;
     }
 
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.2s;
+    .logo-hex svg { width: 34px; height: 34px; }
+
+    .nav-wordmark {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--white);
     }
 
-    nav a:hover { color: var(--text); }
+    .nav-wordmark span { color: var(--cyan); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--cyan);
+      border: 1px solid var(--border-bright);
+      padding: 0.35rem 0.85rem;
+      letter-spacing: 0.08em;
+      background: var(--cyan-dim);
+    }
 
     .nav-cta {
-      background: var(--accent);
-      color: #fff !important;
-      padding: 0.5rem 1.2rem;
-      border-radius: 8px;
+      font-size: 0.78rem;
       font-weight: 600;
-      transition: background 0.2s !important;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      color: var(--bg);
+      background: var(--cyan);
+      padding: 0.5rem 1.25rem;
+      transition: opacity 0.2s, transform 0.2s;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
     }
 
-    .nav-cta:hover { background: var(--accent-glow) !important; }
+    .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
 
     /* HERO */
     .hero {
+      position: relative;
+      z-index: 1;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding: 9rem 2rem 6rem;
       text-align: center;
-      padding: 8rem 2rem 4rem;
-      position: relative;
-      overflow: hidden;
     }
 
-    .hero-bg {
+    /* SCANNING LINE ANIMATION */
+    .hero::after {
+      content: '';
       position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,130,246,0.15) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(245,158,11,0.08) 0%, transparent 60%);
+      left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      animation: scan 4s ease-in-out infinite;
+      opacity: 0.4;
       pointer-events: none;
     }
 
-    .badge {
+    @keyframes scan {
+      0% { top: 20%; opacity: 0; }
+      10% { opacity: 0.4; }
+      90% { opacity: 0.4; }
+      100% { top: 80%; opacity: 0; }
+    }
+
+    .hero-chip {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      background: rgba(59,130,246,0.12);
-      border: 1px solid rgba(59,130,246,0.3);
-      color: var(--accent-glow);
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 0.3rem 0.9rem;
-      border-radius: 100px;
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+      gap: 0.6rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--cyan);
+      border: 1px solid var(--border-bright);
+      padding: 0.45rem 1rem;
+      background: var(--cyan-dim);
+      margin-bottom: 3rem;
+      animation: fadeUp 0.7s ease both;
     }
 
-    h1 {
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
+    .chip-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+      animation: pulse 2s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,245,255,0.4); }
+      50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(0,245,255,0); }
+    }
+
+    /* HOLOGRAPHIC DOMAIN NAME */
+    .domain-display {
+      position: relative;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+
+    .domain-main {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(4.5rem, 13vw, 11rem);
       font-weight: 800;
       letter-spacing: -0.04em;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
+      line-height: 0.9;
+      background: linear-gradient(135deg,
+        #ffffff 0%,
+        #00f5ff 30%,
+        #ffffff 50%,
+        #7c3aed 70%,
+        #00f5ff 85%,
+        #ffffff 100%
+      );
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: holographic 6s ease infinite;
+      filter: drop-shadow(0 0 40px rgba(0,245,255,0.3));
     }
 
-    h1 span {
-      background: linear-gradient(135deg, var(--accent-glow) 0%, var(--gold) 100%);
+    @keyframes holographic {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .domain-tld {
+      font-size: 0.38em;
+      letter-spacing: 0.02em;
+      vertical-align: super;
+      background: linear-gradient(135deg, var(--cyan), var(--green));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    .hero p {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
+    .domain-underline {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan), var(--violet), transparent);
+      margin-top: 1rem;
+      animation: shimmer 3s ease infinite;
+    }
+
+    @keyframes shimmer {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
+    }
+
+    .hero-tagline {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      font-weight: 400;
       color: var(--muted);
-      max-width: 560px;
-      margin-bottom: 2.5rem;
+      max-width: 580px;
+      line-height: 1.65;
+      margin: 2rem auto 0;
+      animation: fadeUp 0.8s 0.25s ease both;
+    }
+
+    .hero-tagline strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    /* STATS ROW */
+    .stats-row {
+      display: flex;
+      gap: 0;
+      margin-top: 4.5rem;
+      border: 1px solid var(--border);
+      background: rgba(6,13,26,0.8);
+      backdrop-filter: blur(10px);
+      width: 100%;
+      max-width: 680px;
+      animation: fadeUp 0.8s 0.4s ease both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stats-row::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    }
+
+    .stat {
+      flex: 1;
+      padding: 1.5rem 1rem;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat-val {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--cyan);
+      filter: drop-shadow(0 0 8px rgba(0,245,255,0.5));
+    }
+
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
     .hero-actions {
       display: flex;
       gap: 1rem;
+      margin-top: 2.5rem;
       flex-wrap: wrap;
       justify-content: center;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.85rem 2rem;
-      border-radius: var(--radius);
-      font-weight: 600;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: all 0.2s;
-      cursor: pointer;
+      animation: fadeUp 0.8s 0.5s ease both;
     }
 
     .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      box-shadow: 0 0 30px rgba(59,130,246,0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      color: var(--bg);
+      background: var(--cyan);
+      padding: 0.9rem 2rem;
+      transition: all 0.2s;
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+      box-shadow: 0 0 30px rgba(0,245,255,0.3);
     }
 
     .btn-primary:hover {
-      background: var(--accent-glow);
-      box-shadow: 0 0 40px rgba(59,130,246,0.5);
-      transform: translateY(-1px);
+      box-shadow: 0 0 50px rgba(0,245,255,0.5);
+      transform: translateY(-2px);
     }
 
-    .btn-ghost {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      color: var(--cyan);
+      border: 1px solid var(--border-bright);
+      padding: 0.9rem 2rem;
+      transition: all 0.2s;
+      background: var(--cyan-dim);
     }
 
-    .btn-ghost:hover {
-      border-color: var(--accent);
-      color: var(--accent-glow);
-      transform: translateY(-1px);
+    .btn-outline:hover {
+      background: rgba(0,245,255,0.18);
+      transform: translateY(-2px);
     }
 
-    /* STATS */
-    .stats {
+    /* SECTION WRAPPER */
+    .section {
+      position: relative;
+      z-index: 1;
+      padding: 6rem 2rem;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .section-label {
       display: flex;
-      gap: 0;
-      margin-top: 5rem;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: var(--surface);
-      width: 100%;
-      max-width: 700px;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3.5rem;
     }
 
-    .stat {
-      flex: 1;
-      padding: 1.5rem;
-      text-align: center;
-      border-right: 1px solid var(--border);
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 3px;
+      height: 18px;
+      background: var(--cyan);
+      box-shadow: 0 0 10px var(--cyan);
     }
 
-    .stat:last-child { border-right: none; }
+    .section-label span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
 
-    .stat-value {
-      font-size: 1.8rem;
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 800;
       letter-spacing: -0.03em;
-      background: linear-gradient(135deg, var(--accent-glow), var(--gold));
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .section-title .accent { color: var(--cyan); }
+
+    /* ATTRIBUTES GRID */
+    .attr-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+
+    .attr-card {
+      background: var(--surface);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .attr-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--violet));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .attr-card:hover { background: rgba(0,245,255,0.03); }
+    .attr-card:hover::after { transform: scaleX(1); }
+
+    .attr-index {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--cyan);
+      letter-spacing: 0.12em;
+      margin-bottom: 1.5rem;
+      opacity: 0.7;
+    }
+
+    .attr-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 8px rgba(0,245,255,0.4));
+    }
+
+    .attr-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+
+    .attr-card p {
+      color: var(--muted);
+      font-size: 0.87rem;
+      line-height: 1.75;
+    }
+
+    /* USE CASES */
+    .use-section {
+      position: relative;
+      z-index: 1;
+      padding: 5rem 2rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(0,245,255,0.02) 0%, rgba(124,58,237,0.03) 100%);
+    }
+
+    .use-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .use-list {
+      list-style: none;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .use-list li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: color 0.2s, padding-left 0.2s;
+      cursor: default;
+    }
+
+    .use-list li:first-child { border-top: 1px solid var(--border); }
+
+    .use-list li:hover {
+      color: var(--white);
+      padding-left: 0.5rem;
+    }
+
+    .use-arrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--cyan);
+      flex-shrink: 0;
+    }
+
+    .market-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .market-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--cyan), var(--violet));
+    }
+
+    .market-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .market-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+
+    .market-item:last-child { border-bottom: none; }
+
+    .market-item-label { color: var(--muted); }
+
+    .market-item-val {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--green);
+      font-size: 0.8rem;
+    }
+
+    /* CONTACT */
+    .contact {
+      position: relative;
+      z-index: 1;
+      padding: 8rem 2rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .contact-glow {
+      position: absolute;
+      bottom: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 400px;
+      background: radial-gradient(ellipse, rgba(0,245,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-ring {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      border: 1px solid rgba(0,245,255,0.04);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .contact-ring-2 {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 900px; height: 900px;
+      border: 1px solid rgba(124,58,237,0.04);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .contact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--cyan);
+      border: 1px solid var(--border-bright);
+      padding: 0.4rem 1rem;
+      background: var(--cyan-dim);
+      margin-bottom: 2.5rem;
+    }
+
+    .contact h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact h2 .accent {
+      background: linear-gradient(135deg, var(--cyan), var(--violet));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    .stat-label {
-      font-size: 0.78rem;
+    .contact-sub {
       color: var(--muted);
-      margin-top: 0.2rem;
+      font-size: 0.95rem;
+      max-width: 440px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.8;
+    }
+
+    .contact-email-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      border: 1px solid var(--border-bright);
+      background: var(--cyan-dim);
+      padding: 1.2rem 2rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+    }
+
+    .contact-email-wrap:hover {
+      background: rgba(0,245,255,0.15);
+      border-color: var(--cyan);
+      box-shadow: 0 0 40px rgba(0,245,255,0.15);
+    }
+
+    .email-icon {
+      font-size: 1.1rem;
+      filter: drop-shadow(0 0 6px rgba(0,245,255,0.5));
+    }
+
+    .contact-email {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .contact-note {
+      margin-top: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* FEATURES */
-    .section {
-      padding: 6rem 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-
-    .section-header h2 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.75rem;
-    }
-
-    .section-header p {
-      color: var(--muted);
-      font-size: 1.1rem;
-      max-width: 480px;
-      margin: 0 auto;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 2rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-
-    .card:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
-    }
-
-    .card-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .card h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.7;
-    }
-
-    /* HOW IT WORKS */
-    .steps {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .step {
-      display: flex;
-      gap: 1.5rem;
-      align-items: flex-start;
-    }
-
-    .step-num {
-      flex-shrink: 0;
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--gold));
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800;
-      font-size: 1rem;
-      color: #fff;
-    }
-
-    .step-content h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-    }
-
-    .step-content p { color: var(--muted); font-size: 0.9rem; }
-
-    /* CTA SECTION */
-    .cta-section {
-      padding: 5rem 2rem;
-      text-align: center;
-    }
-
-    .cta-box {
-      max-width: 680px;
-      margin: 0 auto;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 4rem 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-box::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 50%; transform: translateX(-50%);
-      width: 60%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    }
-
-    .cta-box h2 {
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 1rem;
-    }
-
-    .cta-box p {
-      color: var(--muted);
-      margin-bottom: 2rem;
     }
 
     /* FOOTER */
     footer {
+      position: relative;
+      z-index: 1;
       border-top: 1px solid var(--border);
-      padding: 2.5rem 2rem;
-      text-align: center;
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-brand {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--white);
+    }
+
+    .footer-brand span { color: var(--cyan); }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .footer-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
       color: var(--muted);
-      font-size: 0.85rem;
+      letter-spacing: 0.1em;
     }
 
-    footer .footer-logo {
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-      font-size: 1rem;
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 640px) {
-      nav ul { display: none; }
-      .stats { flex-direction: column; }
-      .stat { border-right: none; border-bottom: 1px solid var(--border); }
-      .stat:last-child { border-bottom: none; }
+    @media (max-width: 768px) {
+      .nav-tag { display: none; }
+      .use-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .attr-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .footer-right { flex-direction: column; gap: 0.75rem; }
     }
   </style>
 </head>
 <body>
 
+  <div class="grid-bg"></div>
+  <div class="glow-top"></div>
+  <div class="glow-bottom"></div>
+
   <!-- NAV -->
   <nav>
-    <a href="#" class="logo">
-      <div class="logo-icon">🏦</div>
-      TokenBank
+    <a href="#" class="nav-logo">
+      <div class="logo-hex">
+        <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" stroke="#00f5ff" stroke-width="1.5" fill="rgba(0,245,255,0.06)"/>
+          <text x="17" y="22" text-anchor="middle" font-size="13" font-weight="bold" fill="#00f5ff" font-family="monospace">T</text>
+        </svg>
+      </div>
+      <span class="nav-wordmark">Token<span>Bank</span>.com</span>
     </a>
-    <ul>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#how">How It Works</a></li>
-      <li><a href="#cta" class="nav-cta">Get Started</a></li>
-    </ul>
+    <div class="nav-right">
+      <div class="nav-tag">// FOR SALE</div>
+      <a href="#contact" class="nav-cta">Enquire Now</a>
+    </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="badge">🔐 Secure &bull; Decentralized &bull; Non-Custodial</div>
-    <h1>Your Digital Assets,<br /><span>Truly Yours</span></h1>
-    <p>TokenBank gives you a self-sovereign crypto wallet with bank-grade UX. Hold, send, and swap tokens without surrendering your keys.</p>
+    <div class="hero-chip">
+      <div class="chip-dot"></div>
+      PREMIUM DOMAIN · AVAILABLE NOW
+    </div>
+
+    <div class="domain-display">
+      <div class="domain-main">
+        TokenBank<span class="domain-tld">.com</span>
+      </div>
+      <div class="domain-underline"></div>
+    </div>
+
+    <p class="hero-tagline">
+      A <strong>category-defining .com domain</strong> at the intersection of
+      tokenization and digital finance. Built for the next generation of
+      <strong>on-chain financial infrastructure</strong>.
+    </p>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-val">$16T+</div>
+        <div class="stat-label">RWA Market 2030</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">.COM</div>
+        <div class="stat-label">Premium TLD</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">9 CHAR</div>
+        <div class="stat-label">Short & Exact Match</div>
+      </div>
+    </div>
+
     <div class="hero-actions">
-      <a href="#cta" class="btn btn-primary">Open Your Account →</a>
-      <a href="#features" class="btn btn-ghost">See Features</a>
-    </div>
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-value">$2.4B+</div>
-        <div class="stat-label">Assets Protected</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">500K+</div>
-        <div class="stat-label">Active Users</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">99.99%</div>
-        <div class="stat-label">Uptime SLA</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section class="section" id="features">
-    <div class="section-header">
-      <h2>Everything a bank offers,<br />nothing it abuses</h2>
-      <p>Built on zero-knowledge proofs so your funds stay yours — always.</p>
-    </div>
-    <div class="grid-3">
-      <div class="card">
-        <div class="card-icon">🔑</div>
-        <h3>Self-Custody</h3>
-        <p>Your private keys never leave your device. Not your keys, not your problem — solved.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">⚡</div>
-        <h3>Instant Settlement</h3>
-        <p>Transfers confirm in seconds, not days. Powered by Layer 2 zkRollup technology.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🔄</div>
-        <h3>Multi-Chain Swaps</h3>
-        <p>Swap tokens across Ethereum, Arbitrum, Base, and more with best-route execution.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🛡️</div>
-        <h3>ZK Security</h3>
-        <p>Every transaction is cryptographically verified. No trusted intermediaries required.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">📱</div>
-        <h3>Mobile First</h3>
-        <p>Native iOS and Android apps with biometric login and hardware wallet support.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">💰</div>
-        <h3>DeFi Yields</h3>
-        <p>Earn yield on idle assets through audited DeFi protocols, directly from your wallet.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="section" id="how" style="padding-top: 0;">
-    <div class="section-header">
-      <h2>Up and running in minutes</h2>
-      <p>No lengthy KYC for self-custody. Your wallet, your rules.</p>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-content">
-          <h3>Create Your Wallet</h3>
-          <p>Generate a wallet in seconds. Your seed phrase is encrypted locally — we never see it.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-content">
-          <h3>Deposit Assets</h3>
-          <p>Send crypto from any exchange or existing wallet. On-ramp with a card via our partners.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-content">
-          <h3>Manage & Grow</h3>
-          <p>Send, swap, stake, or lend — all from one clean interface with transparent fees.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section" id="cta">
-    <div class="cta-box">
-      <h2>Ready to bank on your terms?</h2>
-      <p>Join half a million people who chose financial freedom over financial dependency.</p>
-      <a href="#" class="btn btn-primary" style="font-size: 1.05rem; padding: 1rem 2.5rem;">
-        Create Free Account →
+      <a href="#contact" class="btn-primary">
+        ◈ Make an Offer
+      </a>
+      <a href="#why" class="btn-outline">
+        → View Details
       </a>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- WHY -->
+  <section class="section" id="why">
+    <div class="section-label">
+      <span>01 / Domain Value</span>
+    </div>
+    <h2 class="section-title">Why <span class="accent">TokenBank.com</span><br />is worth owning</h2>
+
+    <div class="attr-grid">
+      <div class="attr-card">
+        <div class="attr-index">[ 0x01 ]</div>
+        <div class="attr-icon">⬡</div>
+        <h3>Category Ownership</h3>
+        <p>TokenBank.com stakes your brand at the exact intersection of tokenization and banking — before the market consolidates. This is what first-mover advantage looks like.</p>
+      </div>
+      <div class="attr-card">
+        <div class="attr-index">[ 0x02 ]</div>
+        <div class="attr-icon">◈</div>
+        <h3>Instant Recall</h3>
+        <p>Two high-frequency words. Zero hyphens. Zero numbers. Customers remember it on first contact, type it correctly, and trust it immediately. Brand equity built-in.</p>
+      </div>
+      <div class="attr-card">
+        <div class="attr-index">[ 0x03 ]</div>
+        <div class="attr-icon">⬟</div>
+        <h3>SEO Gravity</h3>
+        <p>Exact-match keywords for two exploding search verticals: "token" and "bank". Every organic search campaign starts with an unfair advantage.</p>
+      </div>
+      <div class="attr-card">
+        <div class="attr-index">[ 0x04 ]</div>
+        <div class="attr-icon">◇</div>
+        <h3>Institutional Trust Signal</h3>
+        <p>The .com extension is non-negotiable in financial services. Regulators, institutional partners, and enterprise clients see a .com and understand you're serious.</p>
+      </div>
+      <div class="attr-card">
+        <div class="attr-index">[ 0x05 ]</div>
+        <div class="attr-icon">△</div>
+        <h3>Global Neutral</h3>
+        <p>Phonetically clean in English, Mandarin, Spanish, and German. No cultural baggage. A domain that travels as your company expands across jurisdictions.</p>
+      </div>
+      <div class="attr-card">
+        <div class="attr-index">[ 0x06 ]</div>
+        <div class="attr-icon">▷</div>
+        <h3>Appreciating Asset</h3>
+        <p>Premium .com domains in the fintech sector have outperformed most asset classes over the last decade. Acquiring now, at the pre-peak of the tokenization wave, is the rational move.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section class="use-section">
+    <div class="use-inner">
+      <div>
+        <div class="section-label">
+          <span>02 / Ideal For</span>
+        </div>
+        <h2 class="section-title">Built for the <span class="accent">tokenization era</span></h2>
+        <ul class="use-list">
+          <li><span class="use-arrow">→</span> Real-world asset (RWA) tokenization platforms</li>
+          <li><span class="use-arrow">→</span> On-chain digital banking &amp; neobanks</li>
+          <li><span class="use-arrow">→</span> Security token issuance &amp; custody</li>
+          <li><span class="use-arrow">→</span> Tokenized fund &amp; treasury management</li>
+          <li><span class="use-arrow">→</span> Stablecoin &amp; CBDC infrastructure</li>
+          <li><span class="use-arrow">→</span> DeFi lending &amp; yield protocols</li>
+          <li><span class="use-arrow">→</span> Cross-border settlement networks</li>
+          <li><span class="use-arrow">→</span> Institutional crypto asset management</li>
+        </ul>
+      </div>
+      <div>
+        <div class="market-card">
+          <h3>// Market Signals</h3>
+          <div class="market-item">
+            <span class="market-item-label">Global RWA tokenization market 2030</span>
+            <span class="market-item-val">$16.1T</span>
+          </div>
+          <div class="market-item">
+            <span class="market-item-label">Tokenized funds AUM (2025)</span>
+            <span class="market-item-val">$5B+</span>
+          </div>
+          <div class="market-item">
+            <span class="market-item-label">Stablecoin market cap</span>
+            <span class="market-item-val">$230B+</span>
+          </div>
+          <div class="market-item">
+            <span class="market-item-label">Top .com fintech domain sales</span>
+            <span class="market-item-val">$2M–$30M</span>
+          </div>
+          <div class="market-item">
+            <span class="market-item-label">Domain length (shorter = rarer)</span>
+            <span class="market-item-val">9 chars</span>
+          </div>
+          <div class="market-item">
+            <span class="market-item-label">Category keyword match</span>
+            <span class="market-item-val">EXACT</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-glow"></div>
+    <div class="contact-ring"></div>
+    <div class="contact-ring-2"></div>
+
+    <div class="contact-badge">◈ ACQUISITION ENQUIRIES</div>
+
+    <h2>Secure the name.<br />Own the <span class="accent">category.</span></h2>
+
+    <p class="contact-sub">
+      Serious enquiries only. All discussions are confidential.
+      Respond within 24 hours with your intended use case and offer.
+    </p>
+
+    <a href="mailto:dong77@gmail.com?subject=TokenBank.com%20Domain%20Acquisition%20Enquiry" class="contact-email-wrap">
+      <span class="email-icon">◈</span>
+      <span class="contact-email">dong77@gmail.com</span>
+    </a>
+
+    <p class="contact-note">// include intended use case + offer in your message</p>
+  </section>
+
   <footer>
-    <div class="footer-logo">🏦 TokenBank</div>
-    <p>© 2026 TokenBank. All rights reserved. Not financial advice.</p>
+    <div class="footer-brand">Token<span>Bank</span>.com</div>
+    <div class="footer-right">
+      <span class="footer-mono">PREMIUM DOMAIN FOR ACQUISITION</span>
+      <span class="footer-mono">© 2026 ALL RIGHTS RESERVED</span>
+    </div>
   </footer>
 
 </body>
